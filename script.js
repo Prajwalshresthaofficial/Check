@@ -163,7 +163,7 @@ function taxCalculator() {
                 sellSebon: this.customRound(sSebon),
 
 
-                dp: hasValidInput ? "25.00" : "0.00",
+                dp: (hasValidInput && (this.mode === 'sell' || this.shareType === 'Secondary')) ? "25.00" : "0.00",
 
 
                 cgt: this.customRound(tax),
