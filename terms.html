@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms | Prajwal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .glass-card {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .nav-link {
+            @apply text-slate-400 hover:text-blue-400 transition-colors duration-300;
+        }
+        .nav-link.active {
+            @apply text-blue-400 font-bold;
+        }
+    </style>
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.addEventListener('load', function() {
+            window.scrollTo(0, 0);
+        });
+    </script>
+</head>
+<body class="bg-[#0f172a]">
+    <nav class="fixed top-4 left-1/2 z-50 glass-card rounded-[2rem] border border-slate-800 px-4 py-3 max-w-6xl w-[95%] -translate-x-1/2 transform">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <span class="text-xl font-bold text-blue-400"><a href="home.html">PR.</a></span>
+            <div class="flex gap-8">
+                <a href="./home" class="nav-link">Home</a>
+                <a href="./about" class="nav-link">About</a>
+                <a href="./tax" class="nav-link">Tax Tool</a>
+            </div>
+        </div>
+    </nav>
+    <div class="max-w-3xl mx-auto px-6 py-32">
+        <a href="./home" class="inline-flex items-center text-xs font-bold text-blue-400 uppercase tracking-widest mb-10 hover:translate-x-[-5px] transition-transform">← Back</a>
+        <div class="glass-card p-10 md:p-16">
+            <h1 class="text-4xl font-bold mb-8">Terms & <span class="text-blue-500">Conditions</span></h1>
+            <div class="space-y-8 text-slate-300 leading-relaxed">
+                <p><strong>1. Tax Calculations:</strong> Logic follows NEPSE brokerage tiers. Rounding is applied based on specific 3rd-decimal criteria.</p>
+                <p><strong>2. Ownership:</strong> All code and heritage archives are the intellectual property of Prajwal Shrestha.</p>
+                <p class="pt-8 border-t border-slate-700 text-slate-500 text-xs italic">Last Updated: March 2026</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
