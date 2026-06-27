@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prajwal | Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .glass-card {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .nav-link {
+            @apply text-slate-400 hover:text-blue-400 transition-colors duration-300;
+        }
+        .nav-link.active {
+            @apply text-blue-400 font-bold;
+        }
+    </style>
+</head>
+<body class="bg-[#0f172a] text-white min-h-screen">
+    <nav class="fixed top-4 left-1/2 z-50 glass-card rounded-[2rem] border border-slate-800 px-4 py-3 max-w-6xl w-[95%] -translate-x-1/2 transform">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <span class="text-xl font-bold text-blue-400"><a href="home.html">PR.</a></span>
+            <button type="button" id="navToggle" class="md:hidden rounded-lg p-2 text-slate-300 hover:text-blue-400 focus:outline-none" aria-label="Toggle navigation">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <div id="navMenu" class="hidden absolute left-4 right-4 top-20 rounded-2xl border border-slate-800 bg-slate-950/95 p-4 shadow-xl md:static md:flex md:bg-transparent md:border-0 md:p-0 md:shadow-none">
+                <div class="flex flex-col gap-4 md:flex-row md:gap-8">
+                    <a href="home.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="tax.html" class="nav-link">Tax Tool</a>
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-6 max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-start">
+            <div class="space-y-6">
+                <p class="text-blue-400 uppercase tracking-[0.3em] text-sm">Contact</p>
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight">Let’s build something meaningful.</h1>
+                <p class="text-slate-400 max-w-xl text-lg">
+                    Whether it is a financial tool, a creative idea, or a web project, I am always open to fresh conversations.
+                </p>
+
+                <div class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/60 p-6">
+                    <div>
+                        <p class="text-sm text-slate-500">Email</p>
+                        <a href="mailto:hello@prajwalshrestha2.com.np" class="text-blue-400 hover:underline">hello@prajwalshrestha2.com.np</a>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500">Location</p>
+                        <p class="text-slate-300">Kathmandu, Nepal</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500">Connect</p>
+                        <div class="flex flex-wrap gap-4 pt-2">
+                            <a href="https://linkedin.com/in/prajwalshresthaaa" target="_blank" class="text-slate-400 hover:text-blue-400">LinkedIn</a>
+                            <a href="https://youtube.com/@Prajwalshresthaa" target="_blank" class="text-slate-400 hover:text-red-500">YouTube</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-[2rem] border border-slate-800 p-8 shadow-2xl">
+                <form id="contactForm" class="space-y-5">
+                    <div>
+                        <label class="block text-sm text-slate-400 mb-2">Name</label>
+                        <input type="text" name="name" required class="w-full rounded-xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-white outline-none focus:border-blue-500" placeholder="Your name">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-slate-400 mb-2">Email</label>
+                        <input type="email" name="email" required class="w-full rounded-xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-white outline-none focus:border-blue-500" placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-slate-400 mb-2">Message</label>
+                        <textarea name="message" rows="5" required class="w-full rounded-xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-white outline-none focus:border-blue-500" placeholder="Tell me about your idea..."></textarea>
+                    </div>
+                    <button type="submit" class="rounded-full bg-blue-500 px-6 py-3 font-semibold text-white transition hover:bg-blue-400">Send Message</button>
+                    <p class="text-slate-500 text-xs mt-3">This uses your default email app. If it doesn’t open, send directly to <a href="mailto:sthaprajwal050@gmail.com" class="text-blue-400 hover:underline">sthaprajwal050@gmail.com</a>.</p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-12 border-t border-slate-800/50 text-center">
+        <p class="text-slate-500 text-sm">© Prajwal Shrestha 2026. <a href="terms.html" class="text-blue-400 hover:underline">T&C Applied</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('contactForm');
+            if (!form) return;
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const name = form.elements.name.value.trim();
+                const email = form.elements.email.value.trim();
+                const message = form.elements.message.value.trim();
+
+                const subject = encodeURIComponent(`New message from ${name || 'website visitor'}`);
+                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+                const mailtoUrl = `mailto:sthaprajwal050@gmail.com?subject=${subject}&body=${body}`;
+
+                window.open(mailtoUrl, '_self');
+                form.reset();
+            });
+        });
+    </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.getElementById('navToggle');
+        const menu = document.getElementById('navMenu');
+        if (!toggle || !menu) return;
+
+        toggle.addEventListener('click', function () {
+            menu.classList.toggle('hidden');
+        });
+
+        menu.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                menu.classList.add('hidden');
+            });
+        });
+    });
+</script>
+</body>
+</html>
