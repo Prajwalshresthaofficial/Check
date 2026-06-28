@@ -18,7 +18,7 @@
     <link rel="canonical" href="https://prajwalshrestha2.com.np/">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
-    <title>Prajwal | Portfolio</title>
+    <title>Prajwal Shrestha | CA Aspirant & Creator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -58,8 +58,8 @@
   "sameAs": [
     "https://www.linkedin.com/in/prajwalshresthaaa",
     "https://github.com/Prajwalshresthaofficial",
-    "https://www.youtube.com/@Prajwalshresthaa",
-    ],
+    "https://www.youtube.com/@Prajwalshresthaa"
+  ],
   "description": "Prajwal Shrestha is a Market Analyst, Front-end Web Developer, and CA aspirant specializing in financial technology and digital content creation."
 
 }
@@ -86,44 +86,55 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
+        /* Explicit nav-link styles (avoid Tailwind @apply in plain CSS files) */
         .nav-link {
-            @apply text-slate-400 hover:text-blue-400 transition-colors duration-300;
+            color: #94a3b8;
+            transition: color 0.25s ease, background 0.25s ease;
+            text-decoration: none;
+        }
+        .nav-link:hover {
+            color: #60a5fa;
         }
         .nav-link.active {
-            @apply text-blue-400 font-bold;
+            color: #3b82f6;
+            font-weight: 700;
         }
     </style>
 </head>
-<body class="bg-[#0f172a] text-white">
+<body class="bg-[#0f172a] text-white skeleton-active">
     <!-- Skeleton Loader -->
-    <div id="skeletonLoader" class="skeleton-loader">
-        <div class="pt-40 pb-4 px-6 max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center gap-12">
-            <!-- Left content skeleton -->
-            <div class="flex-1 space-y-8 flex flex-col gap-8 w-full">
+    <div id="skeletonLoader" class="skeleton-loader home-skeleton">
+        <div class="skeleton-nav-shell">
+            <div class="skeleton-item skeleton-nav-brand"></div>
+            <div class="skeleton-nav-links">
+                <div class="skeleton-item skeleton-nav-link"></div>
+                <div class="skeleton-item skeleton-nav-link"></div>
+                <div class="skeleton-item skeleton-nav-link"></div>
+                <div class="skeleton-item skeleton-nav-link"></div>
+            </div>
+        </div>
+
+        <div class="skeleton-shell">
+            <div class="skeleton-main">
                 <div class="skeleton-item skeleton-heading"></div>
-                
-                <!-- Mobile: Picture skeleton -->
-                <div class="w-72 h-72 bg-slate-700 rounded-[2.5rem] skeleton-item md:hidden mx-auto"></div>
-                
-                <!-- Mobile: Name skeleton -->
-                <div class="skeleton-item skeleton-text md:hidden" style="max-width: 200px; margin: 0 auto;"></div>
-                
-                <!-- Description skeleton lines -->
-                <div class="space-y-3">
-                    <div class="skeleton-item skeleton-text"></div>
-                    <div class="skeleton-item skeleton-text" style="width: 85%;"></div>
+
+                <div class="skeleton-item skeleton-photo skeleton-mobile-photo"></div>
+
+                <div class="skeleton-item skeleton-name skeleton-mobile-name"></div>
+
+                <div class="skeleton-lines">
+                    <div class="skeleton-item skeleton-line"></div>
+                    <div class="skeleton-item skeleton-line skeleton-line-short"></div>
                 </div>
-                
-                <!-- Social links skeleton -->
-                <div class="flex flex-wrap justify-center gap-4 pt-2 md:justify-start">
-                    <div class="skeleton-item" style="width: 100px; height: 40px;"></div>
-                    <div class="skeleton-item" style="width: 100px; height: 40px;"></div>
-                    <div class="skeleton-item" style="width: 100px; height: 40px;"></div>
+
+                <div class="skeleton-actions">
+                    <div class="skeleton-item skeleton-pill"></div>
+                    <div class="skeleton-item skeleton-pill"></div>
+                    <div class="skeleton-item skeleton-pill"></div>
                 </div>
             </div>
-            
-            <!-- Desktop: Picture skeleton on right -->
-            <div class="w-72 h-72 bg-slate-700 rounded-[2.5rem] skeleton-item hidden md:block"></div>
+
+            <div class="skeleton-item skeleton-photo skeleton-desktop-photo"></div>
         </div>
     </div>
 
@@ -137,9 +148,9 @@
             </button>
             <div id="navMenu" class="hidden absolute left-4 right-4 top-20 rounded-2xl border border-slate-800 bg-slate-950/95 p-4 shadow-xl md:static md:flex md:bg-transparent md:border-0 md:p-0 md:shadow-none">
                 <div class="flex flex-col gap-4 md:flex-row md:gap-8">
-                    <a href="./home" class="nav-link active">Home</a>
-                    <a href="./about" class="nav-link">About</a>
-                    <a href="./tax" class="nav-link">Tax Tool</a>
+                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="tax.html" class="nav-link">Tax Tool</a>
                     <a href="contact.html" class="nav-link">Contact</a>
                 </div>
             </div>
@@ -179,7 +190,7 @@
             <!-- Desktop version -->
             <div class="hidden md:block">
                 <p class="text-slate-400 max-w-md text-lg leading-relaxed">
-                   Designing intelligent financial solutions and<br>Automated tax calculators rooted in<br>Professional Accounting Standards.
+                   Designing intelligent financial solutions and automated tax calculators rooted in professional accounting standards.
                 </p>
             </div>
 
@@ -237,7 +248,7 @@
     </section>
 
     <footer class="py-12 border-t border-slate-800/50 text-center">
-        <p class="text-slate-500 text-sm">© Prajwal Shrestha 2026. <a href="./terms" class="text-blue-400 hover:underline">T&C Applied</a></p>
+        <p class="text-slate-500 text-sm">© Prajwal Shrestha 2026. <a href="terms.html" class="text-blue-400 hover:underline">Terms & Conditions</a></p>
     </footer>
     <script>
         document.addEventListener('contextmenu', function(e) {
@@ -245,14 +256,19 @@
         });
     </script>
 <script>
-    // Hide skeleton loader after page load
+    // Hide skeleton loader on page load using a fade-out transition
     window.addEventListener('load', function() {
         const skeletonLoader = document.getElementById('skeletonLoader');
-        if (skeletonLoader) {
-            setTimeout(() => {
-                skeletonLoader.classList.add('hidden');
-            }, 2000);
-        }
+        if (!skeletonLoader) return;
+
+        const onFadeEnd = function () {
+            skeletonLoader.classList.add('hidden');
+            document.body.classList.remove('skeleton-active', 'skeleton-locked');
+            skeletonLoader.removeEventListener('animationend', onFadeEnd);
+        };
+
+        skeletonLoader.addEventListener('animationend', onFadeEnd);
+        skeletonLoader.classList.add('fade-out');
     });
     
     document.addEventListener('DOMContentLoaded', function () {

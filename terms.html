@@ -29,10 +29,16 @@
             -webkit-backdrop-filter: blur(12px);
         }
         .nav-link {
-            @apply text-slate-400 hover:text-blue-400 transition-colors duration-300;
+            color: #94a3b8;
+            transition: color 0.25s ease, background 0.25s ease;
+            text-decoration: none;
+        }
+        .nav-link:hover {
+            color: #60a5fa;
         }
         .nav-link.active {
-            @apply text-blue-400 font-bold;
+            color: #3b82f6;
+            font-weight: 700;
         }
     </style>
     <script>
@@ -44,24 +50,51 @@
         });
     </script>
 </head>
-<body class="bg-[#0f172a]">
+<body class="bg-[#0f172a] skeleton-active">
     <!-- Skeleton Loader -->
-    <div id="skeletonLoader" class="skeleton-loader">
-        <div class="max-w-3xl mx-auto px-6 py-12 w-full">
-            <div class="space-y-6">
-                <div class="skeleton-item" style="height: 50px;"></div>
-                <div class="space-y-4">
-                    <div class="skeleton-item skeleton-text" style="width: 80px;"></div>
-                    <div class="space-y-3">
-                        <div class="skeleton-item skeleton-text"></div>
-                        <div class="skeleton-item skeleton-text"></div>
-                        <div class="skeleton-item skeleton-text" style="width: 70%;"></div>
-                    </div>
+    <div id="skeletonLoader" class="skeleton-loader terms-skeleton">
+        <div class="w-full max-w-3xl mx-auto px-6">
+            <div class="skeleton-nav-shell">
+                <div class="skeleton-item skeleton-nav-brand"></div>
+                <div class="skeleton-nav-links">
+                    <div class="skeleton-item skeleton-nav-link"></div>
+                    <div class="skeleton-item skeleton-nav-link"></div>
+                    <div class="skeleton-item skeleton-nav-link"></div>
+                    <div class="skeleton-item skeleton-nav-link"></div>
                 </div>
-                <div class="skeleton-item skeleton-text" style="width: 80px;"></div>
-                <div class="space-y-3">
-                    <div class="skeleton-item skeleton-text"></div>
-                    <div class="skeleton-item skeleton-text"></div>
+                <div class="skeleton-nav-toggle" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <div class="skeleton-card" style="padding: 1.5rem;">
+                <div class="skeleton-item" style="height: 2.5rem; width: 70%;"></div>
+                <div class="space-y-4 mt-6">
+                    <div class="skeleton-item" style="height: 0.9rem; width: 7rem;"></div>
+                    <div class="skeleton-lines">
+                        <div class="skeleton-item skeleton-line"></div>
+                        <div class="skeleton-item skeleton-line"></div>
+                        <div class="skeleton-item skeleton-line skeleton-line-short"></div>
+                        <div class="skeleton-item skeleton-line"></div>
+                        <div class="skeleton-item skeleton-line"></div>
+                        <div class="skeleton-item skeleton-line skeleton-line-short"></div>
+                    </div>
+                    <div class="skeleton-item" style="height: 0.9rem; width: 7rem;"></div>
+                    <div class="skeleton-lines">
+                        <div class="skeleton-item skeleton-line"></div>
+                        <div class="skeleton-item skeleton-line"></div>
+                        <div class="skeleton-item skeleton-line"></div>
+                        <div class="skeleton-item skeleton-line skeleton-line-short"></div>
+                    </div>
+                    <div class="skeleton-item" style="height: 0.9rem; width: 6rem;"></div>
+                    <div class="skeleton-lines">
+                        <div class="skeleton-item skeleton-line"></div>
+                        <div class="skeleton-item skeleton-line"></div>
+                        <div class="skeleton-item skeleton-line"></div>
+                        <div class="skeleton-item skeleton-line"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -77,22 +110,53 @@
             </button>
             <div id="navMenu" class="hidden absolute left-4 right-4 top-20 rounded-2xl border border-slate-800 bg-slate-950/95 p-4 shadow-xl md:static md:flex md:bg-transparent md:border-0 md:p-0 md:shadow-none">
                 <div class="flex flex-col gap-4 md:flex-row md:gap-8">
-                    <a href="./home" class="nav-link">Home</a>
-                    <a href="./about" class="nav-link">About</a>
-                    <a href="./tax" class="nav-link">Tax Tool</a>
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="tax.html" class="nav-link">Tax Tool</a>
                     <a href="contact.html" class="nav-link">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
     <div class="max-w-3xl mx-auto px-6 py-32">
-        <a href="./home" class="inline-flex items-center text-xs font-bold text-blue-400 uppercase tracking-widest mb-10 hover:translate-x-[-5px] transition-transform">← Back</a>
-        <div class="glass-card p-10 md:p-16">
-            <h1 class="text-4xl font-bold mb-8">Terms & <span class="text-blue-500">Conditions</span></h1>
+        <div class="glass-card relative p-10 md:p-16">
+            <div class="flex flex-col gap-4 w-full mb-8 md:flex-row md:items-center md:justify-between">
+                <h1 class="text-4xl font-bold flex-1 min-w-0">Terms & <span class="text-blue-500">Conditions</span></h1>
+                <button id="translateToggle" type="button" class="absolute right-5 top-5 inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-blue-400 hover:bg-slate-700 hover:text-white md:static md:ml-auto" aria-label="Toggle translation">
+                    <span>🌐</span>
+                    <span id="translateLabel">ने</span>
+                </button>
+            </div>
             <div class="space-y-8 text-slate-300 leading-relaxed">
-                <p><strong>1. Tax Calculations:</strong> Logic follows NEPSE brokerage tiers. Rounding is applied based on specific 3rd-decimal criteria.</p>
-                <p><strong>2. Ownership:</strong> All code and heritage archives are the intellectual property of Prajwal Shrestha.</p>
-                <p class="pt-8 border-t border-slate-700 text-slate-500 text-xs italic">Last Updated: March 2026</p>
+                <div>
+                    <p class="term-en"><strong>1. Tax Calculations:</strong> Logic follows NEPSE brokerage tiers. Rounding is applied based on specific 3rd-decimal criteria.</p>
+                    <p class="term-ne hidden nepali-font"><strong>१. कर गणना:</strong> तर्क NEPSE ब्रोकरेज तहहरू अनुसरण गर्दछ। ३औं दशमलवको आधारमा गोलाइ लागू गरिन्छ।</p>
+                </div>
+                <div>
+                    <p class="term-en"><strong>2. Ownership:</strong> All code and heritage archives are the intellectual property of Prajwal Shrestha.</p>
+                    <p class="term-ne hidden nepali-font"><strong>२. स्वामित्व:</strong> सबै कोड र सम्पदा अभिलेखहरू प्रज्वल श्रेष्ठको बौद्धिक सम्पत्ति हुन्।</p>
+                </div>
+                <div>
+                    <p class="term-en">• <strong>Accuracy:</strong> All results are estimates and may vary.</p>
+                    <p class="term-ne hidden nepali-font">• <strong>शुद्धता:</strong> सबै नतिजा अनुमान हुन् र फरक हुन सक्छन्।</p>
+                </div>
+                <div>
+                    <p class="term-en">• <strong>Advice:</strong> This site is informational only and does not provide financial advice.</p>
+                    <p class="term-ne hidden nepali-font">• <strong>सलाह:</strong> यो साइट केवल जानकारीमूलक हो र वित्तीय सल्लाह प्रदान गर्दैन।</p>
+                </div>
+                <div>
+                    <p class="term-en">• <strong>Privacy:</strong> Personal data is handled responsibly and is not sold to third parties.</p>
+                    <p class="term-ne hidden nepali-font">• <strong>गोपनीयता:</strong> व्यक्तिगत डेटा जिम्मेवार तरीकाले ह्यान्डल गरिन्छ र तेस्रो पक्षलाई बेच्छैन।</p>
+                </div>
+                <div>
+                    <p class="term-en">• <strong>Symbols:</strong> Terms are shown with a symbol for clearer presentation.</p>
+                    <p class="term-ne hidden nepali-font">• <strong>प्रतीकहरू:</strong> स्पष्ट प्रस्तुतिका लागि सर्तहरू प्रतीकसहित देखाइएका छन्।</p>
+                </div>
+                <div>
+                    <p class="term-en">• <strong>Updates:</strong> This site may be updated when there are changes in tax rules.</p>
+                    <p class="term-ne hidden nepali-font">• <strong>अपडेटहरू:</strong> कर नियमहरू परिवर्तन हुँदा यो साइट अपडेट हुन सक्छ।</p>
+                </div>
+                <p class="pt-8 border-t border-slate-700 text-slate-500 text-xs italic">Last Updated: June 2026</p>
             </div>
         </div>
     </div>
@@ -101,10 +165,57 @@
             e.preventDefault();
         });
     </script>
+    <script>
+        // Lock body scrolling while the skeleton loader is visible
+        (function() {
+            const loader = document.getElementById('skeletonLoader');
+            if (!loader) return;
+            // add lock immediately
+            document.body.classList.add('skeleton-locked');
+
+            // Remove lock when the loader's fadeOut animation ends
+            loader.addEventListener('animationend', function () {
+                document.body.classList.remove('skeleton-locked');
+            });
+
+            // Also watch for class changes (other pages may add 'hidden')
+            const mo = new MutationObserver((mutations) => {
+                for (const m of mutations) {
+                    if (m.attributeName === 'class' && loader.classList.contains('hidden')) {
+                        document.body.classList.remove('skeleton-locked');
+                        mo.disconnect();
+                        break;
+                    }
+                }
+            });
+            mo.observe(loader, { attributes: true });
+        })();
+    </script>
+    <script>
+        // Hide skeleton loader on page load using a fade-out transition
+        window.addEventListener('load', function() {
+            const skeletonLoader = document.getElementById('skeletonLoader');
+            if (!skeletonLoader) return;
+
+            const onFadeEnd = function () {
+                skeletonLoader.classList.add('hidden');
+                document.body.classList.remove('skeleton-active', 'skeleton-locked');
+                skeletonLoader.removeEventListener('animationend', onFadeEnd);
+            };
+
+            skeletonLoader.addEventListener('animationend', onFadeEnd);
+            skeletonLoader.classList.add('fade-out');
+        });
+    </script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const toggle = document.getElementById('navToggle');
         const menu = document.getElementById('navMenu');
+        const translateToggle = document.getElementById('translateToggle');
+        const translateLabel = document.getElementById('translateLabel');
+        const termEn = document.querySelectorAll('.term-en');
+        const termNe = document.querySelectorAll('.term-ne');
+
         if (!toggle || !menu) return;
 
         toggle.addEventListener('click', function () {
@@ -116,6 +227,15 @@
                 menu.classList.add('hidden');
             });
         });
+
+        if (translateToggle) {
+            translateToggle.addEventListener('click', function () {
+                const isNepali = translateLabel.textContent.trim() === 'ने';
+                termEn.forEach(el => el.classList.toggle('hidden'));
+                termNe.forEach(el => el.classList.toggle('hidden'));
+                translateLabel.textContent = isNepali ? 'EN' : 'ने';
+            });
+        }
     });
 </script>
 </body>

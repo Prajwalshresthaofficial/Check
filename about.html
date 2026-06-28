@@ -63,7 +63,7 @@
   "sameAs": [
     "https://www.linkedin.com/in/prajwalshresthaaa",
     "https://github.com/Prajwalshresthaofficial",
-    "https://www.youtube.com/@Prajwalshresthaa",
+    "https://www.youtube.com/@Prajwalshresthaa"
   ],
   "description": "Prajwal Shrestha is a Market Analyst, Front-end Web Developer, and CA aspirant specializing in financial technology and digital content creation."
 
@@ -77,48 +77,61 @@
             -webkit-backdrop-filter: blur(12px);
         }
         .nav-link {
-            @apply text-slate-400 hover:text-blue-400 transition-colors duration-300;
+            color: #94a3b8;
+            transition: color 0.25s ease, background 0.25s ease;
+            text-decoration: none;
+        }
+        .nav-link:hover {
+            color: #60a5fa;
         }
         .nav-link.active {
-            @apply text-blue-400 font-bold;
+            color: #3b82f6;
+            font-weight: 700;
         }
         body { background-color: #0f172a; }
+        /* Page-specific skeleton tweaks: reduce desktop gap and image size */
+        .about-skeleton .skeleton-shell { gap: 0.6rem; justify-content: flex-start; }
+        .about-skeleton .skeleton-main { max-width: 34rem; }
+        .about-skeleton .skeleton-desktop-photo { width: min(100%, 14rem); flex-shrink: 0; margin-right: 1.5rem; }
     </style>
 </head>
-<body>
+<body class="skeleton-active">
     <!-- Skeleton Loader -->
-    <div id="skeletonLoader" class="skeleton-loader">
-        <div class="py-40 max-w-6xl mx-auto px-6 w-full">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                
-                <!-- Picture skeleton -->
-                <div class="w-full max-w-sm mx-auto md:mx-0 md:w-80 shrink-0 order-first md:order-none">
-                    <div class="w-80 h-80 bg-slate-700 rounded-2xl skeleton-item"></div>
+    <div id="skeletonLoader" class="skeleton-loader about-skeleton">
+        <div class="w-full max-w-6xl mx-auto px-2 sm:px-6">
+            <div class="skeleton-nav-shell">
+                <div class="skeleton-item skeleton-nav-brand"></div>
+                <div class="skeleton-nav-links">
+                    <div class="skeleton-item skeleton-nav-link"></div>
+                    <div class="skeleton-item skeleton-nav-link"></div>
+                    <div class="skeleton-item skeleton-nav-link"></div>
+                    <div class="skeleton-item skeleton-nav-link"></div>
                 </div>
+                <div class="skeleton-nav-toggle" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
 
-                <!-- Text skeleton -->
-                <div class="flex-1 space-y-6 md:order-last order-none w-full">
-                    <!-- Heading skeleton -->
-                    <div class="skeleton-item" style="height: 40px; width: 200px;"></div>
-                    
-                    <!-- Paragraph lines -->
-                    <div class="space-y-3">
-                        <div class="skeleton-item skeleton-text"></div>
-                        <div class="skeleton-item skeleton-text"></div>
-                        <div class="skeleton-item skeleton-text" style="width: 90%;"></div>
+            <div class="skeleton-shell">
+                <div class="skeleton-item skeleton-photo skeleton-mobile-photo"></div>
+                <div class="skeleton-item skeleton-photo skeleton-desktop-photo"></div>
+                <div class="skeleton-main">
+                    <div class="skeleton-item skeleton-heading"></div>
+                    <div class="skeleton-lines">
+                        <div class="skeleton-item skeleton-line"></div>
+                        <div class="skeleton-item skeleton-line"></div>
+                        <div class="skeleton-item skeleton-line skeleton-line-short"></div>
                     </div>
-                    
-                    <!-- Paragraph 2 lines -->
-                    <div class="space-y-3">
-                        <div class="skeleton-item skeleton-text"></div>
-                        <div class="skeleton-item skeleton-text"></div>
-                        <div class="skeleton-item skeleton-text" style="width: 85%;"></div>
+                    <div class="skeleton-lines">
+                        <div class="skeleton-item skeleton-line"></div>
+                        <div class="skeleton-item skeleton-line"></div>
+                        <div class="skeleton-item skeleton-line skeleton-line-short"></div>
                     </div>
-                    
-                    <!-- Paragraph 3 lines -->
-                    <div class="space-y-3">
-                        <div class="skeleton-item skeleton-text"></div>
-                        <div class="skeleton-item skeleton-text" style="width: 80%;"></div>
+                    <div class="skeleton-lines">
+                        <div class="skeleton-item skeleton-line"></div>
+                        <div class="skeleton-item skeleton-line skeleton-line-short"></div>
                     </div>
                 </div>
             </div>
@@ -135,9 +148,9 @@
             </button>
             <div id="navMenu" class="hidden absolute left-4 right-4 top-20 rounded-2xl border border-slate-800 bg-slate-950/95 p-4 shadow-xl md:static md:flex md:bg-transparent md:border-0 md:p-0 md:shadow-none">
                 <div class="flex flex-col gap-4 md:flex-row md:gap-8">
-                    <a href="./home" class="nav-link">Home</a>
-                    <a href="./about" class="nav-link active">About</a>
-                    <a href="./tax" class="nav-link">Tax Tool</a>
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link active">About</a>
+                    <a href="tax.html" class="nav-link">Tax Tool</a>
                     <a href="contact.html" class="nav-link">Contact</a>
                 </div>
             </div>
@@ -177,7 +190,7 @@
     </section>
 
     <footer class="py-12 border-t border-slate-800/50 text-center">
-        <p class="text-slate-500 text-sm">© Prajwal Shrestha 2026. <a href="./terms" class="text-blue-400 hover:underline">T&C Applied</a></p>
+        <p class="text-slate-500 text-sm">© Prajwal Shrestha 2026. <a href="terms.html" class="text-blue-400 hover:underline">Terms & Conditions</a></p>
     </footer>
     <script>
         document.addEventListener('contextmenu', function(e) {
@@ -185,14 +198,19 @@
         });
     </script>
 <script>
-    // Hide skeleton loader after page load
+    // Hide skeleton loader on page load using a fade-out transition
     window.addEventListener('load', function() {
         const skeletonLoader = document.getElementById('skeletonLoader');
-        if (skeletonLoader) {
-            setTimeout(() => {
-                skeletonLoader.classList.add('hidden');
-            }, 2000);
-        }
+        if (!skeletonLoader) return;
+
+        const onFadeEnd = function () {
+            skeletonLoader.classList.add('hidden');
+            document.body.classList.remove('skeleton-active', 'skeleton-locked');
+            skeletonLoader.removeEventListener('animationend', onFadeEnd);
+        };
+
+        skeletonLoader.addEventListener('animationend', onFadeEnd);
+        skeletonLoader.classList.add('fade-out');
     });
     
     document.addEventListener('DOMContentLoaded', function () {
