@@ -7,19 +7,22 @@
     <meta name="description" content="Portfolio of Prajwal Shrestha, specializing in NEPSE financial analysis, transaction processing systems, and Pikha Lakhu cultural heritage documentation.">
     <meta name="keywords" content="About Prajwal Shrestha, About CA, ICAN, share tax calculator, share , Share Calculator, Share calculator, NEPSE, Tax Tool, Web Developer, prajwal shrestha">
     <meta name="author" content="Prajwal Shrestha">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://prajwalshrestha2.com.np/">
+    <meta property="og:url" content="https://prajwalshrestha2.com.np/tax.html">
     <meta property="og:title" content="Prajwal Shrestha | Financial Analyst & Creator">
     <meta property="og:description" content="Explore my work in financial management and cultural architectural documentation.">
     <meta property="og:image" content="https://prajwalshrestha2.com.np/picture.jpg">
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yourdomain.com/">
+    <meta property="twitter:url" content="https://prajwalshrestha2.com.np/tax.html">
     <meta property="twitter:title" content="Prajwal Shrestha | Financial Analyst & Creator">
     <meta property="twitter:description" content="Explore my work in financial management and cultural architectural documentation.">
-    <meta property="twitter:image" content="https://yourdomain.com/your-archive-image.jpg">
+    <meta property="twitter:image" content="https://prajwalshrestha2.com.np/picture.jpg">
 
     <link rel="icon"  href="fav.png">
+    <link rel="canonical" href="https://prajwalshrestha2.com.np/tax.html">
     <title>Tax Tool | Prajwal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -67,6 +70,8 @@
 </script>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
         .glass-card {
             background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(12px);
@@ -78,13 +83,51 @@
         .nav-link.active {
             @apply text-blue-400 font-bold;
         }
+        .nepali-font {
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+        }
+        .logo-font {
+            font-family: 'Inter', sans-serif;
+        }
+        .back-to-top {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: all 0.3s ease;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body x-data="taxCalculator()" class="bg-[#0f172a] text-slate-200">
+    <!-- Skeleton Loader -->
+    <div id="skeletonLoader" class="skeleton-loader">
+        <div class="pt-32 pb-20 px-6 max-w-2xl mx-auto w-full">
+            <div class="space-y-6">
+                <div class="skeleton-item" style="height: 50px;"></div>
+                <div class="space-y-4">
+                    <div class="skeleton-item skeleton-text" style="width: 100px;"></div>
+                    <div class="skeleton-item" style="height: 44px;"></div>
+                    <div class="skeleton-item skeleton-text" style="width: 100px;"></div>
+                    <div class="skeleton-item" style="height: 44px;"></div>
+                    <div class="skeleton-item skeleton-text" style="width: 100px;"></div>
+                    <div class="skeleton-item" style="height: 44px;"></div>
+                </div>
+                <div class="skeleton-item" style="height: 50px;"></div>
+                <div class="space-y-3 mt-8">
+                    <div class="skeleton-item skeleton-text"></div>
+                    <div class="skeleton-item skeleton-text"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <nav class="fixed top-4 left-1/2 z-50 glass-card rounded-[2rem] border border-slate-800 px-4 py-3 max-w-6xl w-[95%] -translate-x-1/2 transform">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-           <span class="text-xl font-bold text-blue-400"><a href="home.html">PR.</a></span>
+           <span class="text-xl font-bold text-blue-400 logo-font"><a href="home.html">PR.</a></span>
             <button type="button" id="navToggle" class="md:hidden rounded-lg p-2 text-slate-300 hover:text-blue-400 focus:outline-none" aria-label="Toggle navigation">
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -114,13 +157,15 @@
                             Clear
                         </button>
 
-                        <div class="flex bg-[#1e293b] p-1 rounded-xl border border-slate-700">
+                        <div class="relative flex bg-[#1e293b] p-1 rounded-xl border border-slate-700 overflow-hidden">
+                            <span class="absolute inset-y-1 left-1 w-[calc(50%-0.25rem)] rounded-lg bg-blue-600 shadow-lg transition-all duration-300 ease-out"
+                                  :class="mode === 'sell' ? 'translate-x-full' : 'translate-x-0'"></span>
                             <button @click="mode = 'buy'" 
-                                    :class="mode === 'buy' ? 'bg-blue-600 text-white shadow-lg' : 'text-slate-500'" 
-                                    class="px-6 py-2 rounded-lg text-xs font-bold transition-all duration-300">BUY</button>
+                                    :class="mode === 'buy' ? 'text-white' : 'text-slate-500'" 
+                                    class="relative z-10 px-6 py-2 rounded-lg text-xs font-bold transition-all duration-300">BUY</button>
                             <button @click="mode = 'sell'" 
-                                    :class="mode === 'sell' ? 'bg-blue-600 text-white shadow-lg' : 'text-slate-500'" 
-                                    class="px-6 py-2 rounded-lg text-xs font-bold transition-all duration-300">SELL</button>
+                                    :class="mode === 'sell' ? 'text-white' : 'text-slate-500'" 
+                                    class="relative z-10 px-6 py-2 rounded-lg text-xs font-bold transition-all duration-300">SELL</button>
                         </div>
                     </div>
                 </div>
@@ -131,7 +176,13 @@
                         <input type="number" x-model.number="qty" placeholder="0" class="input-field">
                     </div>
 
-                    <div x-show="mode === 'sell'" x-transition>
+                    <div x-show="mode === 'sell'"
+                         x-transition:enter="transition ease-out duration-300"
+                         x-transition:enter-start="opacity-0 translate-y-3"
+                         x-transition:enter-end="opacity-100 translate-y-0"
+                         x-transition:leave="transition ease-in duration-200"
+                         x-transition:leave-start="opacity-100 translate-y-0"
+                         x-transition:leave-end="opacity-0 translate-y-3">
                         <label class="label-text">Investor Type</label>
                         <select x-model="holding" class="input-field">
                             <option value="long">Individual: More than 1 Year (7.5%)</option>
@@ -157,7 +208,13 @@
                         <input type="number" x-model.number="buyPrice" placeholder="0.00" class="input-field">
                     </div>
 
-                    <div class="md:col-span-2" x-show="mode === 'sell'" x-transition>
+                    <div class="md:col-span-2" x-show="mode === 'sell'"
+                         x-transition:enter="transition ease-out duration-300"
+                         x-transition:enter-start="opacity-0 translate-y-3"
+                         x-transition:enter-end="opacity-100 translate-y-0"
+                         x-transition:leave="transition ease-in duration-200"
+                         x-transition:leave-start="opacity-100 translate-y-0"
+                         x-transition:leave-end="opacity-0 translate-y-3">
                         <label class="label-text">Sell Price Per Unit (Rs)</label>
                         <input type="number" x-model.number="sellPrice" placeholder="0.00" class="input-field">
                     </div>
@@ -169,7 +226,12 @@
                 
                 <div class="space-y-4 text-xs">
                     <template x-if="mode === 'buy'">
-    <div>
+    <div x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 translate-y-2"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 translate-y-2">
         <div class="text-white/40 uppercase tracking-widest font-bold text-[10px] mb-2">
             Buy Side
         </div>
@@ -200,7 +262,12 @@
 </template>
                 
                     <template x-if="mode === 'sell'">
-                        <div>
+                        <div x-transition:enter="transition ease-out duration-300"
+                             x-transition:enter-start="opacity-0 translate-y-2"
+                             x-transition:enter-end="opacity-100 translate-y-0"
+                             x-transition:leave="transition ease-in duration-200"
+                             x-transition:leave-start="opacity-100 translate-y-0"
+                             x-transition:leave-end="opacity-0 translate-y-2">
                             <div class="text-white/40 uppercase tracking-widest font-bold text-[10px] mb-2">Sell Side</div>
                             <div class="space-y-2">
                                 <div class="flex justify-between text-white/80"><span>Share Type</span><span x-text="shareType"></span></div>
@@ -223,6 +290,45 @@
                         </div>
                     </template>
                 </div>
+
+            </div>
+
+            <div class="lg:col-span-3 space-y-4" x-data="{ isNepali: false }">
+                <div class="rounded-[2rem] border border-slate-700/70 bg-slate-900/60 p-6 shadow-lg">
+                    <div class="mb-3 flex items-center justify-between gap-3">
+                        <div class="text-base font-semibold tracking-wide text-blue-300 logo-font sm:text-lg nepali-font" x-text="isNepali ? 'शेयर क्याल्कुलेटर कसरी प्रयोग गर्ने' : 'HOW TO USE SHARE CALCULATOR'"></div>
+                        <button type="button" @click="isNepali = !isNepali" class="group flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/80 px-3 py-1.5 text-xs font-semibold text-slate-200 shadow-lg shadow-slate-950/20 transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-400 hover:bg-slate-700 hover:text-white active:scale-95" aria-label="Translate section">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover:rotate-12 group-active:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1.6 8a8 8 0 011-5.6M7 14a8 8 0 0010.2 0M14 5c1.2 2.5 1.2 5.5 0 8m-5.8-3h7.6" />
+                            </svg>
+                            <span class="transition-all duration-300" x-text="isNepali ? 'EN' : 'ने'"></span>
+                        </button>
+                    </div>
+                    <ol class="list-decimal list-inside space-y-1.5 text-sm text-slate-300 nepali-font">
+                        <li x-text="isNepali ? 'आफ्नो कारोबारमा आधारित BUY वा SELL मोड चयन गर्नुहोस्।' : 'Select BUY or SELL mode based on your transaction.'"></li>
+                        <li x-text="isNepali ? 'कित्ता लेख्नुहोस् र शेयरको प्रकार चयन गर्नुहोस्।' : 'Enter the quantity and choose the share type.'"></li>
+                        <li x-text="isNepali ? 'आवश्यक भए खरिद मूल्य वा बेच्ने मूल्य भर्नुहोस्।' : 'Fill in the purchase price or sell price as required.'"></li>
+                        <li x-text="isNepali ? 'कमिसन, शुल्क, र नाफा वा हानि जाँच्नको लागि breakdown card हेर्नुहोस्।' : 'Review the breakdown card for commission, fees, and profit or loss.'"></li>
+                    </ol>
+                </div>
+
+                <div class="rounded-[2rem] border border-slate-700/70 bg-slate-900/60 p-6 shadow-lg">
+                    <div class="mb-4 text-base font-semibold tracking-wide text-blue-300 logo-font sm:text-lg" x-text="isNepali ? 'प्रायः सोधिने प्रश्नहरू' : 'FAQ'"></div>
+                    <div class="space-y-3 text-sm text-slate-300">
+                        <details class="rounded-xl border border-slate-700/80 bg-slate-800/60 p-4">
+                            <summary class="cursor-pointer font-medium text-white" x-text="isNepali ? 'यो क्याल्कुलेटर केका लागि प्रयोग गरिन्छ?' : 'What is this calculator used for?'" ></summary>
+                            <p class="mt-2 leading-6 text-slate-400" x-text="isNepali ? 'यसले शेयर खरिद वा बेच्ने कुल लागत अनुमान गर्न मद्दत गर्छ, जसमा कमिसन, SEBON शुल्क, र नाफा वा हानि समावेश हुन्छ।' : 'It helps you estimate the total cost of buying or selling shares, including commission, SEBON fees, and profit or loss.'"></p>
+                        </details>
+                        <details class="rounded-xl border border-slate-700/80 bg-slate-800/60 p-4">
+                            <summary class="cursor-pointer font-medium text-white" x-text="isNepali ? 'के म सबै फिल्डहरू भर्नुपर्छ?' : 'Do I need to fill all fields?'" ></summary>
+                            <p class="mt-2 leading-6 text-slate-400" x-text="isNepali ? 'न्यूनतममा, परिमाण, शेयर प्रकार, र सम्बन्धित मूल्य फिल्ड भर्नु पर्दछ ताकि breakdown देखिन सके।' : 'At minimum, quantity, share type, and the relevant price field are needed to see the breakdown.'"></p>
+                        </details>
+                        <details class="rounded-xl border border-slate-700/80 bg-slate-800/60 p-4">
+                            <summary class="cursor-pointer font-medium text-white" x-text="isNepali ? 'के यो क्याल्कुलेटर नेपाली शेयर कारोबारका लागि उपयुक्त छ?' : 'Is this calculator suitable for Nepali share transactions?'" ></summary>
+                            <p class="mt-2 leading-6 text-slate-400" x-text="isNepali ? 'हो, यो नेपाली बजारका सामान्य शुल्क अनुमानका लागि डिजाइन गरिएको हो।' : 'Yes, it is designed with common Nepali market fee assumptions for easier estimation.'"></p>
+                        </details>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -231,13 +337,44 @@
         <p class="footer-text">© Prajwal Shrestha 2026. <a href="./terms" class="footer-link ">T&C Applied</a></p>
     </footer>
 
+    <button id="backToTopBtn" type="button" class="back-to-top fixed bottom-6 right-6 z-50 rounded-full border border-blue-400/40 bg-slate-900/90 p-3 text-blue-300 shadow-lg shadow-slate-950/30 transition-all duration-300 hover:bg-blue-500 hover:text-white" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
     <script>
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
+
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        if (backToTopBtn) {
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
     </script>
     <script src="script.js"></script>
 <script>
+    // Hide skeleton loader after page load
+    window.addEventListener('load', function() {
+        const skeletonLoader = document.getElementById('skeletonLoader');
+        if (skeletonLoader) {
+            setTimeout(() => {
+                skeletonLoader.classList.add('hidden');
+            }, 2000);
+        }
+    });
+    
     document.addEventListener('DOMContentLoaded', function () {
         const toggle = document.getElementById('navToggle');
         const menu = document.getElementById('navMenu');

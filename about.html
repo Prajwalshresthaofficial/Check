@@ -7,20 +7,23 @@
     <meta name="description" content="Portfolio of Prajwal Shrestha, specializing in NEPSE financial analysis, transaction processing systems, and Pikha Lakhu cultural heritage documentation.">
     <meta name="keywords" content="About Prajwal Shrestha, About CA, ICAN, share tax calculator, NEPSE, Tax Tool, Pikha Lakhu, Web Developer, prajwal shrestha, Prajwal Newar ">
     <meta name="author" content="Prajwal Shrestha">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://prajwalshrestha2.com.np/">
+    <meta property="og:url" content="https://prajwalshrestha2.com.np/about.html">
     <meta property="og:title" content="Prajwal Shrestha | Financial Analyst & Creator">
     <meta property="og:description" content="Explore my work in financial management and cultural architectural documentation.">
     <meta property="og:image" content="https://prajwalshrestha2.com.np/picture.jpg">
 
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yourdomain.com/">
+    <meta property="twitter:url" content="https://prajwalshrestha2.com.np/about.html">
     <meta property="twitter:title" content="Prajwal Shrestha | Financial Analyst & Creator">
     <meta property="twitter:description" content="Explore my work in financial management and cultural architectural documentation.">
-    <meta property="twitter:image" content="https://yourdomain.com/your-archive-image.jpg">
+    <meta property="twitter:image" content="https://prajwalshrestha2.com.np/picture.jpg">
 
     <link rel="icon"  href="fav.png">
+    <link rel="canonical" href="https://prajwalshrestha2.com.np/about.html">
     <title>About | Prajwal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
@@ -83,6 +86,45 @@
     </style>
 </head>
 <body>
+    <!-- Skeleton Loader -->
+    <div id="skeletonLoader" class="skeleton-loader">
+        <div class="py-40 max-w-6xl mx-auto px-6 w-full">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                
+                <!-- Picture skeleton -->
+                <div class="w-full max-w-sm mx-auto md:mx-0 md:w-80 shrink-0 order-first md:order-none">
+                    <div class="w-80 h-80 bg-slate-700 rounded-2xl skeleton-item"></div>
+                </div>
+
+                <!-- Text skeleton -->
+                <div class="flex-1 space-y-6 md:order-last order-none w-full">
+                    <!-- Heading skeleton -->
+                    <div class="skeleton-item" style="height: 40px; width: 200px;"></div>
+                    
+                    <!-- Paragraph lines -->
+                    <div class="space-y-3">
+                        <div class="skeleton-item skeleton-text"></div>
+                        <div class="skeleton-item skeleton-text"></div>
+                        <div class="skeleton-item skeleton-text" style="width: 90%;"></div>
+                    </div>
+                    
+                    <!-- Paragraph 2 lines -->
+                    <div class="space-y-3">
+                        <div class="skeleton-item skeleton-text"></div>
+                        <div class="skeleton-item skeleton-text"></div>
+                        <div class="skeleton-item skeleton-text" style="width: 85%;"></div>
+                    </div>
+                    
+                    <!-- Paragraph 3 lines -->
+                    <div class="space-y-3">
+                        <div class="skeleton-item skeleton-text"></div>
+                        <div class="skeleton-item skeleton-text" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <nav class="fixed top-4 left-1/2 z-50 glass-card rounded-[2rem] border border-slate-800 px-4 py-3 max-w-6xl w-[95%] -translate-x-1/2 transform">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
             <span class="text-xl font-bold text-blue-400"><a href="home.html" >PR.</a></span>
@@ -143,6 +185,16 @@
         });
     </script>
 <script>
+    // Hide skeleton loader after page load
+    window.addEventListener('load', function() {
+        const skeletonLoader = document.getElementById('skeletonLoader');
+        if (skeletonLoader) {
+            setTimeout(() => {
+                skeletonLoader.classList.add('hidden');
+            }, 2000);
+        }
+    });
+    
     document.addEventListener('DOMContentLoaded', function () {
         const toggle = document.getElementById('navToggle');
         const menu = document.getElementById('navMenu');
